@@ -2,6 +2,10 @@
 
 A tiny macOS toy that turns "Move to Trash" into a game. A bin with a face sits on your wallpaper. Fling a desktop file at it and the file flies in an arc. Land it in the bin and the file goes to the Trash and you score points.
 
+## Install
+
+Download the DMG from [Releases](https://github.com/nurasyrof/TrashToss/releases) and drag TrashToss into Applications. Current builds aren't notarized yet, so the first time you launch it, go to **System Settings → Privacy & Security** and click **Open Anyway**.
+
 ## How to play
 
 - **Throw**: grab a file on the desktop, flick it toward the bin, and let go while your hand is still moving.
@@ -37,6 +41,10 @@ Requires macOS 13+ and the Swift toolchain (Command Line Tools are enough).
 ```
 
 This produces `build/TrashToss.app`, an ad-hoc signed agent app with no Dock icon. The first file you toss triggers macOS's Desktop folder access prompt.
+
+## Release
+
+`./release.sh` builds a universal, Developer ID–signed and notarized `build/TrashToss-<version>.dmg`. Add `--publish` to also create a GitHub Release, or `--dry-run` to skip signing (with `--publish`, that uploads an unsigned pre-release). The one-time certificate and notarization setup is described at the top of the script. Bump `CFBundleShortVersionString` and `CFBundleVersion` in `Support/Info.plist` before each release.
 
 ## How it works
 
